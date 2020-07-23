@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Songs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="{% static 'img/core-img/compact-disc.png' %}" alt="">
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="musica-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container-fluid">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="musicaNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="albums">Albums</a></li>
+                                    <li><a href="songs">Songs</a></li>
+                                    <li><a href="poems">Poems</a></li>
+                                    <li><a href="#">Info/Contact</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="about">About Us</a></li>
+                                            
+                                            
+                                            <li><a href="contact">Contact</a></li>
+                                            <li><a href="admin">admin</a></li>
+                                        </ul>
+                                    </li>
+                                    
+                                    
+                                    
+                                </ul>
+
+                                <!-- Social Button -->
+                                <div class="top-social-info">
+                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({% static 'img/bg-img/breadcumb2.jpg' %});">
+        <div class="bradcumbContent">
+            <h2>Collection Of Songs</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Search Shows Area Start ##### -->
+    <div class="search-your-shows-area section-padding-100 bg-img" style="background-image: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); height: 410px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-your-shows-content" style="margin-top: -80px;">
+                        <center><a href=""><button class="btn musica-btn m-2">Back Home</button></a></center>
+                        <div class="search-form">
+                            <div class="form-group m-2">
+                                {% if songs %}
+
+                                <h2>Results For Your Search '{{query}}' :</h1>
+                                {% else %}
+                                <h2>No Result For Your Search '{{query}}'!!</h1>
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Search Shows Area End ##### -->
+
+    <!-- ##### songs Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Songs From Rimer</h2>
+                        <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Upcoming Shows Content -->
+                    <div class="upcoming-shows-content">
+
+                        <!-- Single Upcoming Shows -->
+                        {% for song in songs %}
+
+                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                            <div class="shows-date">
+                                <h2> <span>{{song.timeStamp.date}}</span></h2>
+                            </div>
+                            <div class="shows-desc d-flex align-items-center">
+                                <div class="shows-img">
+                                    <img src="/media/{{song.thumbnail}}" alt="">
+                                </div>
+                                <div class="shows-name">
+                                    <h6>{{song.song_title}}</h6>
+                                    <p>Rimer</p>
+                                </div>
+                            </div>
+                            <!-- Music Playlist -->
+                            <div class="album-all-songs">
+                            <div class="music-playlist">
+                                <!-- Single Song -->
+                                <div class="single-music active">
+                                    <h6>{{song.song_title}}</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="/media/{{song.mp3}}">
+                                    </audio>
+                                </div>
+
+                                
+                            </div>
+                           </div>
+                        </div>
+
+                       {% endfor %}
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #####  Songs Area End ##### -->
+
+    
+
+    <!-- ##### CTA Area Start ##### -->
+    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url({% static 'img/blog-img/4.jpg' %});">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-content d-flex justify-content-between align-items-center">
+                        <div class="cta-text">
+                            <h4>Contact us now</h4>
+                            <h2>Do you have a question?</h2>
+                            <h6>Morbi quis venenatis augue, a tincidunt libero. Sed id porttitor elit, eu ultricies mauris.</h6>
+                        </div>
+                        <div class="cta-btn">
+                            <a href="contact" class="btn musica-btn">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### CTA Area End ##### -->
+
+ <!-- ##### Footer Area Start ##### -->
+ <footer class="footer-area section-padding-100-0" style="background-image: url({% static 'img/bg-img/footer-bg-pic2.jpg' %}); background-size:cover;">
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Footer Widget Area -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="footer-widget-area mb-100">
+                    <a href="#"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
+                    <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Website Developed By Shayan <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://shayan-cyber.github.io/portfolio/" target="_blank">Shayan-Dev</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                </div>
+            </div>
+
+            <!-- Footer Widget Area -->
+            <div class="col-12 col-sm-4 col-xl-2">
+                <div class="footer-widget-area mb-100">
+                    <div class="widget-title">
+                        <h4 style="color: #fff; opacity:0.93;">Arts</h4>
+                    </div>
+                    <nav>
+                        <ul class="footer-nav">
+                            <li><a href="albums" style="color: #fff; opacity:0.6;">Albums</a></li>
+                            <li><a href="songs" style="color: #fff; opacity:0.6;">Songs</a></li>
+                            <li><a href="poems" style="color: #fff; opacity:0.6;">Poems</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Footer Widget Area -->
+            <div class="col-12 col-sm-4 col-xl-2">
+                <div class="footer-widget-area mb-100">
+                    <div class="widget-title">
+                        <h4 style="color: #fff; opacity:0.93;">Info/Contact</h4>
+                    </div>
+                    <nav>
+                        <ul class="footer-nav">
+                            <li><a style="color: #fff; opacity:0.6;" href="about">About us</a></li>
+                            <li><a style="color: #fff; opacity:0.6;" href="contact">Contact</a></li>
+                            <li><a style="color: #fff; opacity:0.6;" href="admin">Admin</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Footer Widget Area -->
+            <div class="col-12 col-sm-4 col-xl-2">
+                <div class="footer-widget-area mb-100">
+                    <div class="widget-title">
+                        <h4 style="color: #fff; opacity:0.9;">Social</h4>
+                    </div>
+                    <nav>
+                        <ul class="footer-nav">
+                            <li><a style="color: #fff; opacity:0.6;" href="#">Facebook</a></li>
+                            <li><a style="color: #fff; opacity:0.6;" href="#">Twitter</a></li>
+                            
+                            <li><a style="color: #fff; opacity:0.6;" href="#">Instagram</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Footer Widget Area -->
+            
+
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+
+</html>
