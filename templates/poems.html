@@ -151,7 +151,7 @@ body {
                                     <li><a href="#">Info/Contact</a>
                                         <ul class="dropdown">
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="about">About Us</a></li>
+                                            <li><a href="about">About Me</a></li>
                                             
                                             
                                             <li><a href="contact">Contact</a></li>
@@ -192,6 +192,27 @@ body {
     <!-- bg gradients -->
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
+     <!-- ##### Search Shows Area Start ##### -->
+     <div class="search-your-shows-area section-padding-100 bg-img" style="background-image: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); height: 410px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-your-shows-content" style="margin-top: -80px;">
+                        <h2>Search Your Poem</h2>
+                        <div class="search-form">
+                            <form action="search_poems" method="get" class="form-inline justify-content-center">
+                                <div class="form-group m-2">
+                                    <input type="text" class="form-control" id="query" name="query" placeholder="Poem names">
+                                </div>
+                                <button type="submit" class="btn musica-btn m-2">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Search Shows Area End ##### -->
 
     <!-- ##### Blog Area Start ##### -->
     <div class="blog-area mt-0 section-padding-100" style="background-image: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); background-size:cover;" >
@@ -289,7 +310,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Websi
                         </div>
                         <nav>
                             <ul class="footer-nav">
-                                <li><a style="color: #fff; opacity:0.6;" href="about">About us</a></li>
+                                <li><a style="color: #fff; opacity:0.6;" href="about">About Me</a></li>
                                 <li><a style="color: #fff; opacity:0.6;" href="contact">Contact</a></li>
                                 <li><a style="color: #fff; opacity:0.6;" href="admin">Admin</a></li>
                                 
@@ -334,6 +355,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Websi
     <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
+    
 </body>
 
 </html>

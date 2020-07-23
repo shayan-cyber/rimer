@@ -7,7 +7,7 @@ class Poem(models.Model):
     title = models.CharField(max_length=300)
     content =  models.TextField(blank=True)
     author = models.TextField()
-    timeStamp = models.DateTimeField(blank=True)
+    timeStamp = models.DateTimeField()
     image = models.ImageField(upload_to='poem', default="")
     
     
@@ -21,7 +21,7 @@ class Album(models.Model):
     description =  models.TextField(blank=True)
     album_art = models.ImageField(upload_to='album', default="")
     slug = models.CharField(max_length=150)
-    timeStamp = models.DateTimeField(blank=True)
+    timeStamp = models.DateTimeField()
     def __str__(self):
         return self.album_title
 
@@ -31,7 +31,7 @@ class Song(models.Model):
     song_title = models.CharField(max_length=300)
     mp3 = models.FileField(upload_to='album/mp3', default="")
     thumbnail = models.ImageField(upload_to='album', default="")
-    timeStamp = models.DateTimeField(blank=True)
+    timeStamp = models.DateTimeField()
     def __str__(self):
         return self.song_title
 

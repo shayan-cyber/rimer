@@ -1,4 +1,5 @@
-{% load static  %}
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,13 +11,100 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>About Me</title>
+    <title>Poems</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        /*
+
+All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 77). 
+        
+The 'supports' rule will only run if your browser supports CSS grid.
+
+Flexbox is used as a fallback so that browsers which don't support grid will still recieve an identical layout.
+
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	background-color: #fafafa;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:500);
+
+
+
+.container1 {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+}
+
+.heading {
+	font-family: "Montserrat", Arial, sans-serif;
+	font-size: 4rem;
+	font-weight: 500;
+	line-height: 1.5;
+	text-align: center;
+	padding: 3.5rem 0;
+	color: #1a1a1a;
+}
+
+.heading span {
+	display: block;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	/* Compensate for excess margin on outer gallery flex items */
+	
+}
+
+.gallery-item {
+	/* Minimum width of 24rem and grow to fit available space */
+	flex: 1 0 24rem;
+	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+	margin: 0rem;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+    max-width: 83vw;
+	
+    
+}
+
+.gallery-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease-out;
+}
+
+.gallery-image:hover {
+	transform: scale(1.15);
+}
+
+@supports (display: grid) {
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	
+}
+
+    </style>
 
 </head>
 
@@ -28,8 +116,8 @@
         </div>
     </div>
 
-       <!-- ##### Header Area Start ##### -->
-       <header class="header-area">
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
         <!-- Navbar Area -->
         <div class="musica-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -96,158 +184,86 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({% static 'img/bg-img/breadcumb.jpg' %});">
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({% static 'img/bg-img/bg-poems.jpg' %});">
         <div class="bradcumbContent">
-            <h2>Artist Bio</h2>
+            <h2>Poems</h2>
         </div>
     </div>
     <!-- bg gradients -->
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
-
-    <!-- ##### About Us Area Start ##### -->
-    <div class="about-us-area section-padding-100-0" style="background: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); background-size:cover;">
-        <div class="container">
+     <!-- ##### Search Shows Area Start ##### -->
+     <div class="search-your-shows-area section-padding-100 bg-img" style="background-image: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); height: 410px;">
+        <div class="container-fluid">
             <div class="row">
-                <!-- About Thumbnail -->
-                <div class="col-12 col-lg-6">
-                    <div class="about-thumbnail mb-100">
-                        <img src="{% static 'img/bg-img/bg-pic-7.jpg' %}" alt="">
-                    </div>
-                </div>
-                <!-- About Content -->
-                <div class="col-12 col-lg-6">
-                    <div class="about--content mb-100">
-                        <h4 style="color: #fff;" >Hello, <br>It’s Rimer</h4>
-                        <p style="color: #fff; opacity: 0.96;" >Currently based in Guwahati, Assam. I'm a passionate musician/writer. I've been     working on music since the past two years and on more than one occasions, I confess, without exaggeration, it has saved my life. 
-                            <br><br>
+                <div class="col-12">
+                    <div class="search-your-shows-content" style="margin-top: -80px;">
+                        <center><a href=""><button class="btn musica-btn m-2">Back Home</button></a></center>
+                        <div class="search-form">
+                            <div class="form-group m-2">
+                                {% if poems %}
 
-                            I began writing because I didn't know how else I could talk about some otherwise shocking things. My music often deals with themes of generational hatred, suicide, mental illnesses, societal atrocities, class difference and (on brighter days,) self worship & love. Most of stuff is born out of a rather unhappy place in me and paradoxically enough, from a place of extreme self belief . I aspire to write for those who can't. I want to be the voice of those whose voices are unheard. 
-                            <br><br>
-                            My influences vary from extreme subgenres of metal to poppy commercial music. My intentions vary from saving lives to showcasing glimpses of the afterlife. Currently flicking the pen to form rap verses. The future holds a lot more.
-                            <br><br>
-                            This website is just an attempt to preserve my works outside of social media.</p>
-                        <!-- Key Notes -->
-                        <ul class="key-notes">
-                            <li style="color: #fff; opacity: 0.8;" ><div class="check"><img src="{% static 'img/core-img/check.png' %}" alt=""></div> Donec id purus eu lectus imperdiet varius</li>
-                            <li style="color: #fff; opacity: 0.8;" ><div class="check"><img src="{% static 'img/core-img/check.png' %}" alt=""></div> Id purus eu lectus imperdiet var</li>
-                            <li style="color: #fff; opacity: 0.8;" ><div class="check"><img src="{% static 'img/core-img/check.png' %}" alt=""></div> Donec id purus eu lectus imperdiet varius</li>
-                            <li style="color: #fff; opacity: 0.8;" ><div class="check"><img src="{% static 'img/core-img/check.png' %}" alt=""></div> Id purus eu lectus imperdiet var</li>
-                        </ul>
+                                <h2>Results For Your Search '{{query}}' :</h1>
+                                {% else %}
+                                <h2>No Result For Your Search '{{query}}'!!</h1>
+                                {% endif %}
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ##### About Us Area End ##### -->
+    <!-- ##### Search Shows Area End ##### -->
 
-    <!-- ##### Career Timeline Area Start ##### -->
-    <div class="career-timeline-area section-padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>My Life &amp; career</h2>
-                        <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
-                    </div>
-                </div>
-            </div>
+    <!-- ##### Blog Area Start ##### -->
+    <div class="blog-area mt-0 section-padding-100" style="background-image: url({% static 'img/bg-img/bg-pic-dark.jpg' %}); background-size:cover;" >
+        <div class="container1">
 
-            <div class="row">
-                <div class="col-12">
-
-                    <!-- Single Timeline Area -->
-                    <div class="single-timeline-area d-flex">
-                        <!-- Timeline Date -->
-                        <div class="timeline-date">
-                            <h2>17 <span>July 1983</span></h2>
-                        </div>
-                        <!-- Timeline Content -->
-                        <div class="timeline-content">
-                            <h5>My childhood</h5>
-                            <p>Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem, vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
-                        </div>
-                    </div>
-
-                    <!-- Single Timeline Area -->
-                    <div class="single-timeline-area d-flex">
-                        <!-- Timeline Date -->
-                        <div class="timeline-date">
-                            <h2>25 <span>May 2004</span></h2>
-                        </div>
-                        <!-- Timeline Content -->
-                        <div class="timeline-content">
-                            <h5>Early career years</h5>
-                            <p>Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem, vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
-                        </div>
-                    </div>
-
-                    <!-- Single Timeline Area -->
-                    <div class="single-timeline-area d-flex">
-                        <!-- Timeline Date -->
-                        <div class="timeline-date">
-                            <h2>08 <span>May 2007</span></h2>
-                        </div>
-                        <!-- Timeline Content -->
-                        <div class="timeline-content">
-                            <h5>First Album Release</h5>
-                            <p>Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem, vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
-                        </div>
-                    </div>
-
-                    <!-- Single Timeline Area -->
-                    <div class="single-timeline-area d-flex">
-                        <!-- Timeline Date -->
-                        <div class="timeline-date">
-                            <h2>30 <span>May 2009</span></h2>
-                        </div>
-                        <!-- Timeline Content -->
-                        <div class="timeline-content">
-                            <h5>My First Live Concert</h5>
-                            <p>Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem, vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="timeline-btn text-center mt-100">
-                        <a href="/" class="btn musica-btn">Home</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Side Thumbs -->
-        <div class="first-img">
-            <img src="{% static 'img/bg-img/man.png' %}" alt="">
-        </div>
-        <div class="second-img">
-            <img src="{% static 'img/bg-img/microphone.png' %}" alt="">
-        </div>
-    </div>
-    <!-- ##### Career Timeline Area End ##### -->
-
-    <!-- ##### Discography Area Start ##### -->
-    
-    <!-- ##### Discography Area End ##### -->
-
-    <!-- ##### CTA Area Start ##### -->
-    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url({% static 'img/bg-img/bg-8.jpg' %});">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="cta-content">
-                        <div class="cta-text">
-                            <span>Give Us Feedback</span>
-                            <h2>Contact Us</h2>
+            
+        
+            <div class="gallery">
+                {% for poem in poems %}
+        
+                <div class="gallery-item">
+                    <img class="gallery-image" src="/media/{{poem.image}}">
+                    
+                        <div style="background: #fff; opacity:0.4 ;">
+                            <h4>{{poem.title}}</h4>
                             
                         </div>
-                        <div class="cta-btn mt-30">
-                            <a href="contact" class="btn musica-btn">Contact Us</a>
+                        
+                    
+                </div>
+
+                
+        
+        
+                
+
+                {% endfor %}
+        
+            </div>
+        
+        </div>
+        
+    </div>
+    <!-- ##### Blog Area End ##### -->
+
+    <!-- ##### CTA Area Start ##### -->
+    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url({% static 'img/blog-img/4.jpg' %});">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-content d-flex justify-content-between align-items-center">
+                        <div class="cta-text">
+                            <h4>Contact us now</h4>
+                            <h2>Do you have a question?</h2>
+                            <h6>Morbi quis venenatis augue, a tincidunt libero. Sed id porttitor elit, eu ultricies mauris.</h6>
+                        </div>
+                        <div class="cta-btn">
+                            <a href="contact" class="btn musica-btn">contact us</a>
                         </div>
                     </div>
                 </div>
@@ -342,6 +358,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Websi
     <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
+    
 </body>
 
 </html>

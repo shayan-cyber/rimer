@@ -71,6 +71,24 @@ def search_songs(request):
     return render(request,'search_songs.html',params)
     #return HttpResponse('this is search')
 
+def search_poems(request):
+    query = request.GET['query']
+    if len(query)>140:
+        poems = Poem.objects.none()
+    else:
+        allPoststitle = Poem.objects.filter(title__icontains=query)
+        #allPoststitle1 = Album.objects.filter(album_title__icontains=query)
+        #query2 = allPoststitle1.first().album_title
+        #allPostscontent = Song.objects.filter(album__icontains= query2)
+        poems = allPoststitle
+        
+    params = {'poems':poems, 'query': query}
+    return render(request,'search_poems.html',params)
+    #return HttpResponse('this is search')
+    
+
+
+
 def contact(request):
     if request.method == "POST":
         name = request.POST['name']
@@ -98,7 +116,7 @@ def poems(request):
 
 def about(request):
     return render(request,'about-us.html')
-    
+
 
 
 
